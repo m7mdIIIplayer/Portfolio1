@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afaf Dhiyab - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#6366f1',secondary:'#8b5cf6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <!-- تأكد أنك أضفت remixicon -->
+<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        html, body {
+            font-family: 'Tajawal', sans-serif;
+              overflow-x: hidden;
+  width: 100%;
+
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background-color: #6366f1;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            outline: none;
+        }
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #6366f1;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            background-color: white;
+        }
+        .custom-checkbox:checked {
+            background-color: #6366f1;
+        }
+        .custom-checkbox:checked::after {
+            content: "";
+            position: absolute;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            top: 2px;
+            left: 6px;
+            transform: rotate(45deg);
+        }
+        .custom-radio {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #6366f1;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            background-color: white;
+        }
+        .custom-radio:checked {
+            border-color: #6366f1;
+        }
+        .custom-radio:checked::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #6366f1;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+        }
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .switch-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .switch-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .switch-slider {
+            background-color: #6366f1;
+        }
+        input:checked + .switch-slider:before {
+            transform: translateX(26px);
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-['Pacifico'] text-primary">Afaf Dhiyab</a>
+            <nav class="hidden md:flex space-x-1 space-x-reverse">
+                <a href="#home" class="px-4 py-2 text-gray-700 hover:text-primary transition-colors">الرئيسية</a>
+                <a href="#portfolio" class="px-4 py-2 text-gray-700 hover:text-primary transition-colors">أعمالي</a>
+                <a href="#client-portfolios" class="px-4 py-2 text-gray-700 hover:text-primary transition-colors">محافظ العملاء</a>
+                <a href="#services" class="px-4 py-2 text-gray-700 hover:text-primary transition-colors">خدماتي</a>
+                <a href="#about" class="px-4 py-2 text-gray-700 hover:text-primary transition-colors">من أنا</a>
+                <a href="#contact" class="px-4 py-2 text-gray-700 hover:text-primary transition-colors">اتصل بي</a>
+            </nav>
+            <button id="mobileMenuButton" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+                <i class="ri-menu-line ri-lg"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-2 flex flex-col">
+                <a href="#home" class="py-3 border-b border-gray-100 text-gray-700">الرئيسية</a>
+                <a href="#portfolio" class="py-3 border-b border-gray-100 text-gray-700">أعمالي</a>
+                <a href="#client-portfolios" class="py-3 border-b border-gray-100 text-gray-700">محافظ العملاء</a>
+                <a href="#services" class="py-3 border-b border-gray-100 text-gray-700">خدماتي</a>
+                <a href="#about" class="py-3 border-b border-gray-100 text-gray-700">من أنا</a>
+                <a href="#quickContactForm" class="py-3 text-gray-700">اتصل بي</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-[600px] flex items-center" style="background-image: url('https://readdy.ai/api/search-image?query=modern%20digital%20portfolio%20website%20background%20with%20gradient%20colors%2C%20professional%20design%2C%20soft%20purple%20and%20blue%20tones%2C%20abstract%20shapes%2C%20minimalist%20style%2C%20clean%20design%2C%20perfect%20for%20web%20developer%20portfolio%2C%20high%20quality%2C%204k%20resolution&width=1920&height=1080&seq=1&orientation=landscape'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-l from-transparent to-white/90"></div>
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">مرحباً، أنا <span class="text-primary">عفاف ذياب</span></h1>
+<p id="typing-text" class="text-xl md:text-2xl mb-8 text-gray-700">
+  <!-- سيتم كتابة هذا النص برمجياً -->
+</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#portfolio" class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">استعرض أعمالي</a>
+                    <a href="#request" class="border-2 border-primary text-primary px-6 py-3 !rounded-button font-medium hover:bg-primary/5 transition-colors whitespace-nowrap">تواصل معي</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+          <!-- العنوان والوصف -->
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-2">أعمالي</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">مجموعة مختارة من المشاريع التي قمت بتصميمها وتطويرها</p>
+          </div>
+      
+<!-- الفلاتر -->
+<div class="flex justify-center mb-8 overflow-x-auto">
+  <div class="inline-flex bg-gray-100 p-1 rounded-full">
+    <button class="tab-button px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap text-white bg-primary" data-filter="all">جميع المشاريع</button>
+    <button class="tab-button px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap text-gray-700" data-filter="web">تصميم مواقع</button>
+    <button class="tab-button px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap text-gray-700" data-filter="app">تطبيقات</button>
+    <button class="tab-button px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap text-gray-700" data-filter="3d">تصاميم 3D</button>
+  </div>
+</div>
+        
+          <!-- شبكة الأعمال -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid"></div>
+      
+          <!-- زر رؤية المزيد -->
+          <div class="text-center mt-8">
+            <button id="load-more" class="bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-primary-dark transition hidden">
+              رؤية المزيد
+            </button>
+          </div>
+                </section>
+            
+<!-- Video Portfolio Section -->
+<div class="mt-16 px-4 md:px-8">
+    <h3 class="text-2xl font-bold mb-6 text-center">فيديوهات توضيحية</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Video Item 1 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+            <div class="relative bg-black h-[520px] w-full group rounded-lg overflow-hidden">
+                <video id="video1" class="w-full h-full object-cover pointer-events-none rounded-lg" preload="metadata">
+                    <source src="https://m7mdIIIplayer.github.io/MyPortfolio/IMG_1492.MP4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+
+                <!-- زر التشغيل -->
+                <button onclick="playVideo('video1', this)" class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition">
+                    <i class="ri-play-circle-fill text-white text-6xl"></i>
+                </button>
+
+                <!-- زر التكبير -->
+                <button onclick="openModal('https://m7mdIIIplayer.github.io/MyPortfolio/IMG_1492.MP4')" class="absolute top-3 right-3 bg-white text-black hover:bg-primary hover:text-white transition p-2 rounded-full shadow-lg">
+                    <i class="ri-fullscreen-fill text-lg"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <h4 class="text-lg font-bold mb-2">تصميم وتطوير واجهة متجر من الصفر</h4>
+                <p class="text-gray-600 text-sm">تصميم عصري واحترافي لواجهة الموقع بالإضافة إلى تصميم صفحة تفاصيل المنتج.</p>
+            </div>
+        </div>
+
+        <!-- Video Item 2 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+            <div class="relative bg-black h-[520px] w-full group rounded-lg overflow-hidden">
+                <video id="video2" class="w-full h-full object-cover pointer-events-none rounded-lg" preload="metadata">
+                    <source src="https://m7mdIIIplayer.github.io/MyPortfolio/IMG_1491.MP4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+
+                <!-- زر التشغيل -->
+                <button onclick="playVideo('video2', this)" class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition">
+                    <i class="ri-play-circle-fill text-white text-6xl"></i>
+                </button>
+
+                <!-- زر التكبير -->
+                <button onclick="openModal('https://m7mdIIIplayer.github.io/MyPortfolio/IMG_1491.MP4')" class="absolute top-3 right-3 bg-white text-black hover:bg-primary hover:text-white transition p-2 rounded-full shadow-lg">
+                    <i class="ri-fullscreen-fill text-lg"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <h4 class="text-lg font-bold mb-2">تصميم وتطوير منصة لمشاهدة الأفلام والمسلسلات.</h4>
+                <p class="text-gray-600 text-sm">تصميم وبرمجة موقع وتطبيق ديسكتوب لمنصة مشاهدة أفلام ومسلسلات بدون الاعتماد على التخزين السحابي.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- نافذة الفيديو المكبر -->
+<div id="videoModal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center">
+    <div class="relative" id="modalContainer">
+        <video id="modalVideo" class="w-full h-full object-cover rounded-lg" controls autoplay></video>
+        <button onclick="closeModal()" class="absolute top-3 right-3 bg-white text-black hover:bg-red-500 hover:text-white transition p-2 rounded-full shadow-lg">
+            <i class="ri-close-line text-lg"></i>
+        </button>
+    </div>
+</div>
+        </div>
+    </section>
+<!-- Client Portfolios Section -->
+<section id="client-portfolios" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-2">محافظ الأعمال المصممة للعملاء</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                مجموعة من محافظ الأعمال الاحترافية التي صممتها في مختلف المجالات
+            </p>
+        </div>
+
+<!-- Portfolio Categories -->
+<div class="flex justify-center mb-8 overflow-x-auto">
+    <div class="inline-flex bg-gray-100 p-1 rounded-full">
+      <button class="client-tab px-4 py-2 rounded-full text-sm font-medium bg-primary text-white" data-filter="all">الكل</button>
+      <button class="client-tab px-4 py-2 rounded-full text-sm font-medium text-gray-700" data-filter="personal">شخصي</button>
+      <button class="client-tab px-4 py-2 rounded-full text-sm font-medium text-gray-700" data-filter="companies">شركات</button>
+      <button class="client-tab px-4 py-2 rounded-full text-sm font-medium text-gray-700" data-filter="artist">فنانين</button>
+      <button class="client-tab px-4 py-2 rounded-full text-sm font-medium text-gray-700" data-filter="professional">مهنيين</button>
+    </div>
+  </div>
+        <!-- Client Portfolios Grid -->
+        <div id="client-portfolios-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- سيتم تعبئته ديناميكياً -->
+        </div>
+    </div>
+</section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">خدماتي</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">مجموعة من الخدمات الاحترافية التي أقدمها لعملائي لمساعدتهم على تحقيق أهدافهم الرقمية</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:shadow-lg">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-lg mb-4">
+                        <i class="ri-code-s-slash-line ri-2x"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">تصميم مواقع من الصفر</h3>
+                    <p class="text-gray-600 mb-4">تصميم وتطوير مواقع إلكترونية فريدة ومخصصة تناسب احتياجات عملك وتعكس هويتك البصرية</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 font-medium">تبدأ من $80</span>
+                        <a href="#request" class="text-primary font-medium hover:text-primary/80 transition-colors">طلب الخدمة</a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:shadow-lg">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-lg mb-4">
+                        <i class="ri-layout-line ri-2x"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">تعديل أو تحسين مواقع جاهزة</h3>
+                    <p class="text-gray-600 mb-4">تحديث وتطوير المواقع الموجودة لتحسين أدائها وتجربة المستخدم وتوافقها مع محركات البحث</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 font-medium">تبدأ من $50</span>
+                        <a href="#request" class="text-primary font-medium hover:text-primary/80 transition-colors">طلب الخدمة</a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:shadow-lg">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-lg mb-4">
+                        <i class="ri-gallery-line ri-2x"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">تصميم بورتفوليو خاص</h3>
+                    <p class="text-gray-600 mb-4">تصميم محفظة أعمال احترافية تعرض مهاراتك وإنجازاتك بطريقة جذابة ومميزة</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 font-medium">تبدأ من $20</span>
+                        <a href="#request" class="text-primary font-medium hover:text-primary/80 transition-colors">طلب الخدمة</a>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:shadow-lg">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-lg mb-4">
+                        <i class="ri-robot-line ri-2x"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">برمجة بوتات أو أكواد مخصصة</h3>
+                    <p class="text-gray-600 mb-4">تطوير بوتات وأكواد مخصصة لأتمتة المهام وتحسين كفاءة العمل وتوفير الوقت</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 font-medium">تبدأ من $100</span>
+                        <a href="#request" class="text-primary font-medium hover:text-primary/80 transition-colors">طلب الخدمة</a>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:shadow-lg">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-lg mb-4">
+                        <i class="ri-shield-check-line ri-2x"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">استشارات تقنية واختبار اختراق</h3>
+                    <p class="text-gray-600 mb-4">تقديم استشارات تقنية واختبار أمان المواقع للكشف عن الثغرات وتعزيز الحماية</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 font-medium">تبدأ من $50</span>
+                        <a href="#request" class="text-primary font-medium hover:text-primary/80 transition-colors">طلب الخدمة</a>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition-transform duration-300 hover:shadow-lg">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-lg mb-4">
+                        <i class="ri-smartphone-line ri-2x"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">تصميم واجهات تطبيقات الجوال</h3>
+                    <p class="text-gray-600 mb-4">برمجة وتصميم واجهات مستخدم جذابة وسهلة الاستخدام لتطبيقات الهواتف الذكية</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 font-medium">تبدأ من $100</span>
+                        <a href="#request" class="text-primary font-medium hover:text-primary/80 transition-colors">طلب الخدمة</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Request Service Section -->
+<section id="request" class="py-20 bg-gray-50" x-data="{ service: '', open: false, options: ['تصميم موقع من الصفر', 'تعديل أو تحسين موقع', 'تصميم بورتفوليو', 'برمجة بوت أو كود', 'استشارة تقنية', 'تصميم واجهة تطبيق'] }">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/3 bg-primary p-8 text-white" style="min-height: 400px;">
+                    <h2 class="text-2xl font-bold mb-4">طلب خدمة</h2>
+                    <p class="mb-6">أخبرني عن مشروعك، وسأتواصل معك في أقرب وقت ممكن لمناقشة التفاصيل. وإذا لم تجد ما تبحث عنه، لا تتردد في التواصل معي من خلال قسم الاستعلامات في الأسفل.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 ml-3">
+                                <i class="ri-time-line text-white"></i>
+                            </div>
+                            <span>أيام العمل: الأحد - الخميس</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 p-8">
+                    <form id="serviceRequestForm">
+                        <div class="mb-4">
+                            <label for="fullName" class="block text-gray-700 font-medium mb-2">الاسم الكامل</label>
+                            <input type="text" id="fullName" name="fullName" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" required>
+                        </div>
+                        <!-- القائمة المنسدلة الجديدة -->
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-medium mb-2">نوع الخدمة</label>
+                            <div class="relative">
+                                <button type="button"
+                                    @click="open = !open"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded bg-white text-right flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary">
+                                    <span x-text="service || 'اختر نوع الخدمة'"></span>
+                                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </button>
+                                <div x-show="open" @click.away="open = false" class="absolute z-10 mt-2 w-full bg-white border border-gray-300 rounded shadow-lg max-h-60 overflow-y-auto">
+                                    <ul class="divide-y divide-gray-100">
+                                        <template x-for="option in options" :key="option">
+                                            <li>
+                                                <button
+                                                    type="button"
+                                                    @click="service = option; open = false"
+                                                    class="w-full text-right px-4 py-2 hover:bg-primary hover:text-white transition-colors"
+                                                    x-text="option"
+                                                ></button>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- مهم: name="service" حتى ترصده JS تبعك -->
+                            <input type="hidden" name="service" :value="service" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="description" class="block text-gray-700 font-medium mb-2">وصف المشروع</label>
+                            <textarea id="description" name="description" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" required></textarea>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2">الميزانية ($)</label>
+                            <input type="range" id="budget" name="budget" min="50" max="10000" step="50" value="300" class="w-full">
+                            <div class="flex justify-between text-sm text-gray-500 mt-1">
+                                <span>$50</span>
+                                <span id="budgetValue">$300</span>
+                                <span>$10000+</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">إرسال الطلب</button>
+                        <div id="serviceAlert" class="hidden"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2">
+                    <img src="https://static.vecteezy.com/system/resources/previews/003/815/991/non_2x/female-programmer-doing-software-coding-free-vector.jpg" alt="عفاف ذياب" class="rounded-lg shadow-lg w-full max-w-md mx-auto">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4">من أنا</h2>
+                    <p class="text-gray-700 mb-6"> عفاف ذياب، مصممة ومطورة مواقع إلكترونية ومبرمجة تطبيقات وبوتات، متخصصة في إنشاء تجارب رقمية فريدة وجذابة. بدأت رحلتي في عالم تطوير الويب منذ سنين، حيث عملت مع العديد من العملاء من مختلف القطاعات لمساعدتهم على تحقيق أهدافهم الرقمية من خلال التصميم الإبداعي والبرمجة الفعالة.</p>
+                    <p class="text-gray-700 mb-6">أؤمن بأن التصميم الجيد يجب أن يكون جميلاً وعملياً في نفس الوقت، لذلك أركز على إنشاء مواقع سهلة الاستخدام وجذابة بصرياً وسريعة التحميل ومتوافقة مع محركات البحث.</p>
+                    
+                    <h3 class="text-xl font-bold mb-3">مهاراتي</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">HTML/CSS</span>
+                                <span class="text-gray-500">100%</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">JavaScript</span>
+                                <span class="text-gray-500">100%</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Python</span>
+                                <span class="text-gray-500">95%</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">PenetrationTester/ BugHunting</span>
+                                <span class="text-gray-500">90%</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">UI/UX Design</span>
+                                <span class="text-gray-500">100%</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">PHP</span>
+                                <span class="text-gray-500">80%</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+<div class="flex gap-4">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/profile.php?id=61554354853421" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#1877F2] text-white rounded-full hover:bg-[#145dbf] transition-colors">
+        <i class="ri-facebook-fill"></i>
+    </a>
+    
+    <!-- Twitter (X) -->
+    <a href="https://x.com/missions_s6989" target="_blank" class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full hover:bg-neutral-800 transition-colors">
+        <i class="ri-twitter-x-fill"></i>
+    </a>
+</div>
+    </section>
+
+<!-- Why Choose Me Section -->
+<section id="why-choose-me" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-2">لماذا تختارني؟</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">إليك بعض الأسباب التي تجعلني الخيار الأمثل لك:</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Reason 1: Speed -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mx-auto mb-4">
+                    <i class="ri-speed-line ri-lg"></i> <!-- Icon for speed -->
+                </div>
+                <h3 class="text-lg font-bold mb-2">السرعة</h3>
+                <p class="text-gray-600">أنا أعمل بسرعة لضمان تسليم المشاريع في الوقت المحدد، مع الحفاظ على الجودة العالية.</p>
+            </div>
+
+            <!-- Reason 2: Accuracy -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mx-auto mb-4">
+                    <i class="ri-check-line ri-lg"></i> <!-- Icon for accuracy -->
+                </div>
+                <h3 class="text-lg font-bold mb-2">الدقة</h3>
+                <p class="text-gray-600">أعطي اهتماماً دقيقاً للتفاصيل لضمان تنفيذ كل جانب من جوانب المشروع بشكل مثالي.</p>
+            </div>
+
+            <!-- Reason 3: Affordable Prices -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mx-auto mb-4">
+                    <i class="ri-price-tag-line ri-lg"></i> <!-- Icon for affordability -->
+                </div>
+                <h3 class="text-lg font-bold mb-2">الأسعار المناسبة</h3>
+                <p class="text-gray-600">أقدم خدمات عالية الجودة بأسعار تنافسية تناسب جميع الميزانيات.</p>
+            </div>
+        </div>
+
+<!-- Quick Contact Form -->
+<div class="mt-12 max-w-xl mx-auto bg-white rounded-lg shadow-md p-8">
+    <h3 class="text-xl font-bold mb-4">رسالة سريعة</h3>
+    <form id="quickContactForm">
+        <div class="mb-4">
+            <input type="text" id="name" placeholder="الاسم" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" required>
+        </div>
+        <div class="mb-4">
+            <input type="email" id="email" placeholder="البريد الإلكتروني" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" required>
+        </div>
+        <div class="mb-4">
+            <input type="text" id="subject" placeholder="الموضوع" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" required>
+        </div>
+        <div class="mb-4">
+            <textarea id="message" placeholder="الرسالة" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" required></textarea>
+        </div>
+        <button type="submit" class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">إرسال الرسالة</button>
+        <div id="contactAlert" class="hidden"></div>
+    </form>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <a href="#" class="text-2xl font-['Pacifico'] text-white">Afaf Dhiyab</a>
+                <p class="mt-2 text-gray-400 max-w-md">مصممة ومطورة مواقع إلكترونية متخصصة في إنشاء تجارب رقمية فريدة وجذابة</p>
+            </div>
+            <div class="flex flex-col items-center md:items-end">
+                <div class="flex gap-4 mb-4">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/profile.php?id=61554354853421" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#1877F2] text-white rounded-full hover:bg-[#145dbf] transition-colors">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                    <!-- Twitter (X) -->
+                    <a href="https://x.com/missions_s6989" target="_blank" class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full hover:bg-neutral-800 transition-colors">
+                        <i class="ri-twitter-x-fill"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400">© 2025 عفاف ذياب. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tab-button');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // إزالة التنسيقات النشطة من كل الأزرار
+        tabs.forEach(t => {
+          t.classList.remove('bg-primary', 'text-white');
+          t.classList.add('text-gray-700');
+        });
+
+        // تفعيل الزر الحالي
+        tab.classList.remove('text-gray-700');
+        tab.classList.add('bg-primary', 'text-white');
+
+        // تصفية العناصر حسب الفئة
+        const filter = tab.getAttribute('data-filter');
+        document.querySelectorAll('.project-item').forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // تأكيد تعيين "جميع المشاريع" كزر نشط عند تحميل الصفحة
+    const defaultTab = document.querySelector('.tab-button[data-filter="all"]');
+    if (defaultTab) {
+      defaultTab.classList.remove('text-gray-700');
+      defaultTab.classList.add('bg-primary', 'text-white');
+    }
+  });
+</script>
+    
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.client-tab');
+      
+      // عند النقر على أي زر
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // إزالة الخلفية البنفسجية من جميع الأزرار
+          tabs.forEach(t => {
+            t.classList.remove('bg-primary', 'text-white');
+            t.classList.add('text-gray-700');
+          });
+          
+          // إضافة الخلفية البنفسجية للزر الذي تم النقر عليه
+          tab.classList.remove('text-gray-700');
+          tab.classList.add('bg-primary', 'text-white');
+    
+          // تصفية العناصر حسب الفئة
+          const filter = tab.getAttribute('data-filter');
+          document.querySelectorAll('.client-portfolio').forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (filter === 'all' || category === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+    
+    </script>  
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const clientPortfolioGrid = document.getElementById('client-portfolios-grid');
+            const dataURL = "https://raw.githubusercontent.com/m7mdIIIplayer/MyPortfolio/refs/heads/main/WebsiteS2";
+            const maxVisible = 6;
+            let currentFilter = "all";
+            let allData = [];
+    
+            const showMoreBtn = document.createElement("button");
+            showMoreBtn.id = "show-more-button";
+            showMoreBtn.className = "mt-6 block mx-auto bg-primary text-white px-6 py-2 rounded-lg text-sm font-medium hidden";
+            showMoreBtn.innerText = "رؤية المزيد";
+            showMoreBtn.setAttribute("data-expanded", "false");
+    
+            clientPortfolioGrid.parentNode.appendChild(showMoreBtn);
+    
+            fetch(dataURL)
+                .then(res => res.json())
+                .then(data => {
+                    allData = data;
+                    renderClientPortfolios(data);
+                    setupFiltering();
+                    filterItems("all");
+                })
+                .catch(err => console.error("فشل تحميل البيانات:", err));
+    
+            function renderClientPortfolios(portfolios) {
+                clientPortfolioGrid.innerHTML = '';
+                portfolios.forEach(item => {
+                    const techTags = item.USE.split(',').map(tech =>
+                        `<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">${tech.trim()}</span>`
+                    ).join('');
+    
+                    const html = `
+                        <div class="client-portfolio bg-white rounded-lg overflow-hidden shadow-md" data-category="${item.Category}">
+                            <img src="${item.ImageUrl}" alt="${item.TitleS2}" class="w-full h-48 object-cover object-top">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">${item.TitleS2}</h3>
+                                <p class="text-gray-600 mb-4">${item.Description2}</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    ${techTags}
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <a href="${item.GitHubProjectURL}" target="_blank" class="text-primary font-medium hover:text-primary/80 transition-colors flex items-center">
+                                        <span>معاينة</span>
+                                        <i class="ri-arrow-left-line ri-lg mr-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    clientPortfolioGrid.innerHTML += html;
+                });
+            }
+    
+            function filterItems(filter) {
+                currentFilter = filter;
+                const items = document.querySelectorAll(".client-portfolio");
+                let visibleCount = 0;
+    
+                items.forEach(item => {
+                    const category = item.getAttribute("data-category");
+                    const match = filter === "all" || category === filter;
+    
+                    if (match && visibleCount < maxVisible) {
+                        item.style.display = "block";
+                        item.classList.remove("hidden");
+                        visibleCount++;
+                    } else {
+                        item.style.display = "none";
+                        item.classList.add("hidden");
+                    }
+                });
+    
+                toggleMoreButton();
+            }
+    
+            function toggleMoreButton() {
+                const items = Array.from(document.querySelectorAll(".client-portfolio"));
+                const matching = items.filter(item =>
+                    currentFilter === "all" || item.getAttribute("data-category") === currentFilter
+                );
+    
+                if (matching.length > maxVisible) {
+                    showMoreBtn.classList.remove("hidden");
+                    showMoreBtn.innerText = "رؤية المزيد";
+                    showMoreBtn.setAttribute("data-expanded", "false");
+                } else {
+                    showMoreBtn.classList.add("hidden");
+                }
+            }
+    
+            showMoreBtn.addEventListener("click", () => {
+                const expanded = showMoreBtn.getAttribute("data-expanded") === "true";
+                const items = Array.from(document.querySelectorAll(".client-portfolio"));
+                const matching = items.filter(item =>
+                    currentFilter === "all" || item.getAttribute("data-category") === currentFilter
+                );
+    
+                if (!expanded) {
+                    matching.forEach(item => {
+                        item.style.display = "block";
+                        item.classList.remove("hidden");
+                    });
+                    showMoreBtn.innerText = "رؤية أقل";
+                    showMoreBtn.setAttribute("data-expanded", "true");
+                } else {
+                    filterItems(currentFilter);
+                }
+            });
+    
+            function setupFiltering() {
+                const tabs = document.querySelectorAll(".client-tab");
+                tabs.forEach(tab => {
+                    tab.addEventListener("click", () => {
+                        tabs.forEach(t => t.classList.remove("active"));
+                        tab.classList.add("active");
+    
+                        const filter = tab.getAttribute("data-filter");
+                        filterItems(filter);
+                    });
+                });
+            }
+        });
+    </script>
+        
+
+    <script>
+        const portfolioGrid = document.getElementById("portfolio-grid");
+        const loadMoreBtn = document.getElementById("load-more");
+        const tabButtons = document.querySelectorAll(".tab-button");
+      
+        let allProjects = [];
+        let currentFilter = "all";
+        let showingAll = false;
+        const ITEMS_PER_PAGE = 6;
+      
+        function getCategoryKey(category) {
+          category = category.toLowerCase();
+          if (category.includes("web")) return "web";
+          if (category.includes("app")) return "app";
+          if (category.includes("3d")) return "3d";
+          return "all";
+        }
+      
+        function renderProjects() {
+          portfolioGrid.innerHTML = "";
+      
+          const filteredProjects = allProjects.filter(project => {
+            const key = getCategoryKey(project.Category);
+            return currentFilter === "all" || key === currentFilter;
+          });
+      
+          const toDisplay = showingAll ? filteredProjects : filteredProjects.slice(0, ITEMS_PER_PAGE);
+      
+          toDisplay.forEach(project => {
+            const item = document.createElement("div");
+            const category = getCategoryKey(project.Category);
+            item.className = `portfolio-item group relative overflow-hidden rounded-lg shadow-md`;
+            item.setAttribute("data-category", category);
+      
+            item.innerHTML = `
+              <img src="${project.ImageUrl.replace('/view?usp=sharing', '/preview')}" 
+                   alt="${project.Title}" 
+                   class="w-full h-64 object-cover object-top transition-transform duration-500 group-hover:scale-110">
+              <div class="portfolio-overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center p-4 opacity-0 transition-opacity duration-300">
+                  <h3 class="text-white text-xl font-bold mb-2">${project.Title}</h3>
+                  <a href="${project.GitHubProjectURL}" target="_blank" class="bg-white text-primary px-4 py-2 !rounded-button font-medium hover:bg-white/90 transition-colors whitespace-nowrap">
+                      عرض المشروع
+                  </a>
+              </div>
+            `;
+            portfolioGrid.appendChild(item);
+          });
+      
+          // تحديث زر رؤية المزيد / أقل
+          if (filteredProjects.length > ITEMS_PER_PAGE) {
+            loadMoreBtn.classList.remove("hidden");
+            loadMoreBtn.textContent = showingAll ? "رؤية أقل" : "رؤية المزيد";
+          } else {
+            loadMoreBtn.classList.add("hidden");
+          }
+        }
+      
+        // تحميل البيانات
+        fetch("https://raw.githubusercontent.com/m7mdIIIplayer/MyPortfolio/refs/heads/main/WebsitesS1")
+          .then(response => response.json())
+          .then(data => {
+            allProjects = data;
+            showingAll = false;
+            renderProjects();
+          })
+          .catch(error => {
+            console.error("فشل تحميل البيانات:", error);
+          });
+      
+        // زر رؤية المزيد / أقل
+        loadMoreBtn.addEventListener("click", () => {
+          showingAll = !showingAll;
+          renderProjects();
+        });
+      
+        // الفلاتر
+        tabButtons.forEach(button => {
+          button.addEventListener("click", () => {
+            tabButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+            currentFilter = button.getAttribute("data-filter");
+            showingAll = false;
+            renderProjects();
+          });
+        });
+      </script>
+                
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Portfolio Filter
+            const filterButtons = document.querySelectorAll('.tab-button');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Client Portfolio Filter
+            const clientTabButtons = document.querySelectorAll('.client-tab');
+            const clientPortfolioItems = document.querySelectorAll('.client-portfolio');
+            
+            clientTabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    clientTabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    clientPortfolioItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    (function () {
+        emailjs.init("Cxv-ScFoluE5x9KRM");
+        console.log("✅ EmailJS initialized");
+    })();
+</script>
+
+<!-- Service Request Form -->
+<script>
+    document.getElementById('budget').addEventListener('input', function () {
+        document.getElementById('budgetValue').textContent = '$' + this.value;
+    });
+
+    document.getElementById('serviceRequestForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const form = this;
+        const alertBox = document.getElementById('serviceAlert');
+
+        // Reset alert style
+        alertBox.className = 'mt-4 hidden flex items-center gap-2 px-4 py-3 rounded text-sm font-medium transition-opacity duration-500';
+        alertBox.style.opacity = '1';
+        alertBox.innerHTML = '';
+
+        emailjs.send("service_73wuumg", "template_0bx6h89", {
+            fullName: form.fullName.value,
+            email: form.email.value,
+            service: form.service.value,
+            description: form.description.value,
+            budget: form.budget.value
+        }).then(function (response) {
+            console.log("✅ Email sent successfully:", response);
+
+            alertBox.innerHTML = `<span class="text-green-700">✅ تم إرسال الطلب بنجاح!</span>`;
+            alertBox.classList.remove('hidden');
+            alertBox.classList.add('bg-green-100', 'text-green-700', 'border', 'border-green-300');
+
+            form.reset();
+            document.getElementById('budgetValue').textContent = '$300';
+
+            setTimeout(() => {
+                alertBox.style.opacity = '0';
+                setTimeout(() => alertBox.classList.add('hidden'), 500);
+            }, 5000);
+        }, function (error) {
+            console.error("❌ Email sending failed:", error);
+
+            alertBox.innerHTML = `<span class="text-red-700">❌ حدث خطأ أثناء الإرسال، حاول مرة أخرى.</span>`;
+            alertBox.classList.remove('hidden');
+            alertBox.classList.add('bg-red-100', 'text-red-700', 'border', 'border-red-300');
+
+            setTimeout(() => {
+                alertBox.style.opacity = '0';
+                setTimeout(() => alertBox.classList.add('hidden'), 500);
+            }, 5000);
+        });
+    });
+</script>
+
+<!-- Quick Contact Form -->
+<script>
+    document.getElementById('quickContactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const form = this;
+        const alertBox = document.getElementById('contactAlert');
+
+        // Reset alert style
+        alertBox.className = 'mt-4 hidden flex items-center gap-2 px-4 py-3 rounded text-sm font-medium transition-opacity duration-500';
+        alertBox.style.opacity = '1';
+        alertBox.innerHTML = '';
+
+        emailjs.send("service_afcakof", "template_1jwrt7v", {
+            name: form.name.value,
+            email: form.email.value,
+            subject: form.subject.value,
+            message: form.message.value
+        }).then(function (response) {
+            alertBox.innerHTML = `<span class="text-green-700">✅ تم إرسال الرسالة بنجاح!</span>`;
+            alertBox.classList.remove('hidden');
+            alertBox.classList.add('bg-green-100', 'text-green-700', 'border', 'border-green-300');
+
+            form.reset();
+
+            setTimeout(() => {
+                alertBox.style.opacity = '0';
+                setTimeout(() => alertBox.classList.add('hidden'), 500);
+            }, 5000);
+        }, function (error) {
+            alertBox.innerHTML = `<span class="text-red-700">❌ حدث خطأ أثناء الإرسال، حاول مرة أخرى.</span>`;
+            alertBox.classList.remove('hidden');
+            alertBox.classList.add('bg-red-100', 'text-red-700', 'border', 'border-red-300');
+
+            console.error(error);
+
+            setTimeout(() => {
+                alertBox.style.opacity = '0';
+                setTimeout(() => alertBox.classList.add('hidden'), 500);
+            }, 5000);
+        });
+    });
+</script>
+<script>
+    function playVideo(id, btn) {
+        const video = document.getElementById(id);
+        video.classList.remove("pointer-events-none");
+        video.controls = true;
+        video.play();
+        btn.style.display = 'none';
+    }
+
+    function openModal(src) {
+        const modal = document.getElementById("videoModal");
+        const modalVideo = document.getElementById("modalVideo");
+        const modalContainer = document.getElementById("modalContainer");
+        
+        // تعيين الحجم المحدد للنافذة (تقليص الحجم)
+        modalContainer.style.width = "371px";  // العرض 80% من 464px
+        modalContainer.style.height = "662px"; // تعديل الارتفاع وفقًا لذلك للحفاظ على النسبة
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        modalVideo.src = src;
+        modalVideo.play();
+    }
+
+    function closeModal() {
+        const modal = document.getElementById("videoModal");
+        const modalVideo = document.getElementById("modalVideo");
+        const modalContainer = document.getElementById("modalContainer");
+
+        // إعادة حجم النافذة إلى الحجم الأصلي عند غلقها
+        modalContainer.style.width = "90vw";
+        modalContainer.style.height = "90vh";
+
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        modalVideo.pause();
+        modalVideo.src = "";
+    }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const text = "مُصممة ومُطورة مواقع إلكترونية ومبرمجة، متخصصة في إنشاء تجارب رقمية مبتكرة تجمع بين الإبداع والكود";
+    const element = document.getElementById("typing-text");
+    let index = 0;
+    function type() {
+      if (index < text.length) {
+        element.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 50); // سرعة الكتابة (كل 50ms حرف)
+      }
+    }
+    type();
+  });
+</script>
+</body>
+</html>
